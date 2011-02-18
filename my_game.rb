@@ -10,7 +10,7 @@ class MyGame < Gosu::Window
       @dog = Player.new(self, "images/dog_icon.png")
       @dog_mower = DogMower.new(@dog)
       @dog.x = 100
-      @dog.y = 100
+      @dog.y = 300
     end
 
     def update
@@ -34,6 +34,9 @@ class MyGame < Gosu::Window
           close
         end
     @dog_mower.update
+    if @player1.hit_by?(@dog)
+      close
+    end
 
     end
 

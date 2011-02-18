@@ -8,8 +8,8 @@ class Player
   def initialize(game_window, icon_path)
     @game_window = game_window
     @icon = Gosu::Image.new(@game_window,  icon_path, true)
-    @x = 50
-    @y = 50
+    @x = 0
+    @y = 0
     @right_boundry = @game_window.width - @icon.width
     @bottom_boundry = @game_window.height - @icon.height
 
@@ -40,6 +40,10 @@ class Player
         if @y < @bottom_boundry
       @y += 5
     end
+  end
+
+  def hit_by?(player)
+    Gosu::distance(@x, @y, player.x, player.y) < 50
   end
 
 end
