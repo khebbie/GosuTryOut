@@ -5,7 +5,7 @@ class DogMower
   end
 
   def update
-    if @dog.x == @dog.right_boundry
+    if @dog.x >  @dog.right_boundry
       @should_move_right = false
     end
     if @dog.x == 0

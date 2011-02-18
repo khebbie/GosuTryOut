@@ -25,7 +25,7 @@ class Player
   end
 
   def move_right
-        if @x < @right_boundry
+    if @x < @right_boundry
       @x += 5
     end
   end
@@ -37,7 +37,7 @@ class Player
   end
 
   def move_down
-        if @y < @bottom_boundry
+    if @y < @bottom_boundry
       @y += 5
     end
   end
