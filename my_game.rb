@@ -30,7 +30,7 @@ class MyGame < Gosu::Window
         @player1.move_down
       end
 
-        if button_down? Gosu::Button::KbTab
+        if button_down? Gosu::Button::KbEscape
           close
         end
     @dog_mower.update
