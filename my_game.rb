@@ -22,7 +22,13 @@ class MyGame < Gosu::Window
       @hurray.x = -300
       @hurray.y = -300
 
+      @loser= Player.new(self, "images/loser.png")
+      @loser.x = -300
+      @loser.y = -300
+
+
       @has_won = false
+      @has_lost = false
     end
 
     def update
@@ -33,7 +39,10 @@ class MyGame < Gosu::Window
      if @has_won
         @hurray.move_down
         @hurray.move_right
-    else
+      elsif @has_lost
+        @loser.move_down
+        @loser.move_right
+      else
 
       if button_down? Gosu::Button::KbLeft
         @player1.move_left
@@ -53,7 +62,7 @@ class MyGame < Gosu::Window
 
         @dog_mower.update
         if @player1.hit_by?(@dog)
-          close
+         @has_lost = true 
         end
 
         if @cake.hit_by?(@player1)
@@ -67,6 +76,7 @@ class MyGame < Gosu::Window
           @dog.draw
           @cake.draw
           @hurray.draw
+          @loser.draw
         end
 
     end
