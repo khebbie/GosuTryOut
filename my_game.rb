@@ -18,6 +18,13 @@ class MyGame < Gosu::Window
       @dog.y = 300
       @dog.pixel_movement = 10
 
+      @dog2 = Player.new(self, "images/dog_icon.png")
+      @dog_mower2 = DogMower.new(@dog2)
+      @dog2.x = 200
+      @dog2.y = 50
+      @dog2.pixel_movement = 10
+
+
       @hurray = Player.new(self, "images/hurray.png")
       @hurray.x = -300
       @hurray.y = -300
@@ -61,7 +68,8 @@ class MyGame < Gosu::Window
       end
 
         @dog_mower.update
-        if @player1.hit_by?(@dog)
+        @dog_mower2.update
+        if @player1.hit_by?(@dog) or @player1.hit_by?(@dog2)
          @has_lost = true 
         end
 
@@ -74,6 +82,7 @@ class MyGame < Gosu::Window
         def draw
           @player1.draw
           @dog.draw
+          @dog2.draw
           @cake.draw
           @hurray.draw
           @loser.draw
