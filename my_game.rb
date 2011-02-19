@@ -26,6 +26,15 @@ class MyGame < Gosu::Window
     end
 
     def update
+    if button_down? Gosu::Button::KbEscape
+        close
+    end
+
+     if @has_won
+        @hurray.move_down
+        @hurray.move_right
+    else
+
       if button_down? Gosu::Button::KbLeft
         @player1.move_left
       end
@@ -42,34 +51,25 @@ class MyGame < Gosu::Window
         @player1.move_down
       end
 
-        if button_down? Gosu::Button::KbEscape
+        @dog_mower.update
+        if @player1.hit_by?(@dog)
           close
         end
-    @dog_mower.update
-    if @player1.hit_by?(@dog)
-      close
+
+        if @cake.hit_by?(@player1)
+          @has_won = true
+        end
+      end
     end
 
-    if @cake.hit_by?(@player1)
-    
-      @has_won = true
-    end
-
-    if @has_won
-      @hurray.move_down
-      @hurray.move_right
-    end
+        def draw
+          @player1.draw
+          @dog.draw
+          @cake.draw
+          @hurray.draw
+        end
 
     end
-
-    def draw
-      @player1.draw
-      @dog.draw
-      @cake.draw
-      @hurray.draw
-    end
-
-end
 
 window = MyGame.new
 window.show
