@@ -36,6 +36,10 @@ class MyGame < Gosu::Window
      if @has_won
         @hurray.move_down
         @hurray.move_right
+        if button_down? Gosu::Button::KbEnter
+          @has_won = false
+        end
+
       elsif @has_lost
         @loser.move_down
         @loser.move_right
@@ -56,8 +60,8 @@ class MyGame < Gosu::Window
         @player1.move_down
       end
       if @level_controller.hit_by?(@player1)
-                 @has_lost = true 
-        end
+          @has_lost = true 
+      end
 
         if @cake.hit_by?(@player1)
           @has_won = true

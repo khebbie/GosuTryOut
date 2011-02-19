@@ -33,7 +33,7 @@ class Player
   end
 
   def move_up
-     if @y > 0
+    if @y > 0
       @y -= @pixel_movement
     end
   end
