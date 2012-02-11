@@ -5,6 +5,7 @@ class LevelController
     @level = 1
     @dogs = Array.new
     @dogmovers = Array.new
+@font = Gosu::Font.new(game_window, Gosu::default_font_name, 20)
 	Level1()
   end
 def Level4()
@@ -61,6 +62,8 @@ player.y = 0
 	@dogs.each do |dog|
 		dog.draw
 	end
+@font.draw("Level #{@level}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
+
   end
 
   def update
@@ -70,3 +73,7 @@ player.y = 0
 
   end
   end
+module ZOrder
+  Background, Stars, Player, UI = *0..3
+end
+
