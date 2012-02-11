@@ -30,12 +30,8 @@ class MyGame < Gosu::Window
         close
     end
 
-     if @has_won
-        if button_down? Gosu::Button::KbEnter
-          @has_won = false
-        end
-
-      elsif @has_lost
+     
+      if @has_lost
         @loser.move_down
         @loser.move_right
       else

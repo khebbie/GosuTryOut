@@ -5,15 +5,32 @@ class LevelController
     @level = 1
     @dogs = Array.new
     @dogmovers = Array.new
-
-    createDog(0, 300)
-    createDog(300, 50)
-    createDog(500, 150)
-    createDog(200, 250)
-    createDog(150, 50)
-    createDog(150, 450)
-    createDog(550, 450)
+	Level1()
   end
+def Level4()
+createDog(500, 800)
+Level3()
+  end
+
+ def Level3()
+    createDog(800, 50)
+Level2()
+  end
+
+ def Level2()
+    createDog(0, 300)
+    createDog(500, 150)
+    createDog(150, 600)
+	Level1()
+  end
+
+  def Level1()
+    createDog(200, 250)
+    createDog(50, 50)
+    createDog(550, 450)
+
+  end
+
   def createDog(x,y)
     dog = Player.new(@game_window, "images/dog_icon.png")
     dog_mower = DogMower.new(dog)
@@ -34,7 +51,11 @@ end
     @level += 1
 player.x= 150
 player.y = 0
+   @dogs = Array.new
+   @dogmovers = Array.new
+  self.send("Level#{@level}")
   end
+
 
   def draw
 	@dogs.each do |dog|
@@ -48,4 +69,4 @@ player.y = 0
 	end    
 
   end
-end
+  end
