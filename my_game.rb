@@ -1,21 +1,18 @@
 require 'rubygems'
 require 'gosu'
-require 'player'
-require 'dogmower'
-require 'level_controller'
+require './player'
+require './dogmower'
+require './level_controller'
 
 class MyGame < Gosu::Window
     def initialize
       super(800, 600, false)
       @player1 = Player.new(self, "images/player1_icon.png")
+      @player1.x = 250      
 
       @cake = Player.new(self, "images/cake_icon.png")
       @cake.y = 500
       @cake.x = 50
-
-      @hurray = Player.new(self, "images/hurray.png")
-      @hurray.x = -300
-      @hurray.y = -300
 
       @loser= Player.new(self, "images/loser.png")
       @loser.x = -300
@@ -34,8 +31,6 @@ class MyGame < Gosu::Window
     end
 
      if @has_won
-        @hurray.move_down
-        @hurray.move_right
         if button_down? Gosu::Button::KbEnter
           @has_won = false
         end
@@ -65,7 +60,7 @@ class MyGame < Gosu::Window
 
         if @cake.hit_by?(@player1)
           @has_won = true
-          @level_controller.level_up
+          @level_controller.level_up(@player1)
         end
 
         @level_controller.update
@@ -75,7 +70,6 @@ class MyGame < Gosu::Window
         def draw
           @player1.draw
           @cake.draw
-          @hurray.draw
           @loser.draw
           @level_controller.draw
         end
