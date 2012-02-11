@@ -27,7 +27,7 @@ Level2()
 
   def Level1()
     createDog(200, 250)
-    createDog(50, 50)
+    createDog(50, 80)
     createDog(550, 450)
 
   end
@@ -50,7 +50,7 @@ end
 
   def level_up(player)
     @level += 1
-player.x= 150
+player.x= 0
 player.y = 0
    @dogs = Array.new
    @dogmovers = Array.new
